@@ -1,0 +1,17 @@
+{%extends "blog/layout.html"%}
+{%load crispy_forms_tags%}
+{%block body%}
+    <div class="content-section">
+        <form action="", method="POST">
+            {%csrf_token%}
+            <fieldset>
+                <legend class="border-bottom">Create New Post</legend>
+                {{form|crispy}}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Post</button>
+            </div>
+        </form>
+    </div>
+
+{%endblock body%}

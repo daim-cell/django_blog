@@ -1,0 +1,29 @@
+{%extends 'blog/layout.html'%}
+
+{%block body%}
+    <article class="media content-section">
+      {%if object.author.profile %}
+        <img class = "rounded-circle article-img" src="{{object.author.profile.image.url}}"> 
+      {%else%}
+        <img class = "rounded-circle article-img" src="/media/default.JPG">
+      {%endif%}
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ object.author }}</a>
+            <small class="text-muted">{{ object.date_posted}}</small>
+          </div>
+          <h2 class="article-title">{{ object.title }}</h2>
+          <p class="article-content">{{ object.content }}</p>
+          <div>
+            <img src="{{object.image}}"> 
+          </div>
+          {%if object.author == user%}
+            <div>
+              <a class="btn btn-outline-secondary btn-sm mt-1 mb-1" href="{%url 'post-update' object.id%}">Edit</a>
+              <a class="btn btn-outline-danger btn-sm mt-1 mb-1" href="{%url 'post-delete' object.id%}">Delete</a>
+            </div>
+          {%endif%}
+        </div>
+      </article>
+
+{%endblock%}
